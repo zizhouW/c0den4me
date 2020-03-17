@@ -1,0 +1,38 @@
+.game-container {
+  .min-player-msg {
+    font-size: 14px;
+    color: #898989;
+  }
+  .is-current-user {
+    font-weight: bold;
+  }
+  
+  .player-name-dialog {
+    .MuiPaper-root {
+      min-width: 600px;
+    }
+  
+    &-error {
+      color: red;
+    }
+  }
+
+  .word-board {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &__row {
+      margin-bottom: 20px;
+      display: flex;
+      flex-grow: 1;
+
+      &__choice {
+        min-width: 150px;
+        min-height: 50px;
+        border-radius: 0;
+        margin: 0 20px;
+      }
+    }
+  }
+}
