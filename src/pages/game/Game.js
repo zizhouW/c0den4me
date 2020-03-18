@@ -65,7 +65,7 @@ const Game = (props) => {
                 variant="outlined"
                 className="word-board__row__choice"
                 color="default"
-                disabled={gameData.currentClue}
+                disabled={currentUser === gameData.blueClueGiver || currentUser === gameData.redClueGiver}
                 onClick={(e) => handleWordClick(e, currentBoard.keys[row][col])}
               >
                 {gameData.wordList[row * BOARD_ARRAY.length + col]}
@@ -111,7 +111,8 @@ const Game = (props) => {
             <div className="min-player-msg">* Game requires minimum 2 players on each team.</div>
           ) : null}
           {wordBoard}
-          {gameData.boardId && (
+          {gameData.boardId && (currentUser === gameData.blueClueGiver ||
+          currentUser === gameData.redClueGiver) && (
             <img src={`answers/${gameData.boardId}.png`} />
           )}
         </div>
@@ -121,7 +122,7 @@ const Game = (props) => {
           Exit Game
         </Button>
       )}
-      <Dialog className="player-name-dialog" open={currentUser} aria-labelledby="form-dialog-title">
+      <Dialog className="player-name-dialog" open={!currentUser} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Enter your name</DialogTitle>
         <DialogContent>
           <DialogContentText>

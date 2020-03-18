@@ -13,14 +13,11 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/create">
-            <CreateGame />
-          </Route>
           <Route path="/games/:gameId">
             <Game />
           </Route>
           <Route path="/">
-            home
+            <CreateGame />
           </Route>
         </Switch>
       </Router>

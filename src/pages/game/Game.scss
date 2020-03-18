@@ -6,16 +6,6 @@
   .is-current-user {
     font-weight: bold;
   }
-  
-  .player-name-dialog {
-    .MuiPaper-root {
-      min-width: 600px;
-    }
-  
-    &-error {
-      color: red;
-    }
-  }
 
   .word-board {
     width: 100%;
@@ -34,5 +24,16 @@
         margin: 0 20px;
       }
     }
+  }
+}
+  
+.player-name-dialog {
+  .MuiPaper-root {
+    min-width: 600px;
+  }
+
+  .player-name-dialog-error {
+    color: red;
+    font-size: 12px;
   }
 }

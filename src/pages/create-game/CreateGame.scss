@@ -1,3 +1,12 @@
 .create-game-container {
   padding: 24px;
+
+  .MuiButtonBase-root {
+    margin: 20px 0 8px 0;
+  }
+
+  .create-game-error {
+    font-size: 12px;
+    color: red;
+  }
 }

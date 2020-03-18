@@ -10,11 +10,18 @@ class CreateGame extends Component {
 
     this.state = {
       gameName: '',
+      error: '',
     };
   }
 
   handleCreateRoom = () => {
     const { gameName } = this.state;
+    if (!gameName) {
+      this.setState({
+        error: 'Please enter a valid game room name.',
+      });
+      return;
+    }
     firebase.firestore().collection('games').add({
       name: gameName,
       blues: [],
@@ -23,8 +30,12 @@ class CreateGame extends Component {
       redClueGiver: null,
       currentClue: null,
       chats: [],
+      started: false,
+      wordList: [],
+      boardId: null,
     }).then((res) => {
       firebase.firestore().collection('games').doc(res.id).onSnapshot((doc) => {
+        debugger
         if (doc.exists) {
           this.props.history.push(`/games/${doc.id}`);
         }
@@ -33,22 +44,32 @@ class CreateGame extends Component {
   }
 
   handleGameNameChange = (event) => {
+    const { error } = this.state;
     this.setState({
       gameName: event.target.value,
     });
+    if (error) {
+      this.setState({
+        error: '',
+      });
+    }
   }
 
   render() {
+    const { error } = this.state;
     return (
       <div className="create-game-container">
         <h1>Create Game</h1>
         <FormControl>
-          <InputLabel htmlFor="input-name">Queue Name</InputLabel>
+          <InputLabel htmlFor="input-name">Game Name</InputLabel>
           <Input id="input-name" value={this.state.gameName} onChange={this.handleGameNameChange} />
           <Button variant="contained" color="primary" onClick={this.handleCreateRoom}>
             Submit
           </Button>
         </FormControl>
+        {error && error.length && (
+          <div class="create-game-error">{error}</div>
+        )}
       </div>
     )
   }
