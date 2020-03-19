@@ -1,7 +1,7 @@
 {
   "name": "c0den4me",
   "version": "0.1.0",
-  "private": true,
+  "homepage": "http://zizhouW.github.io/c0den4me",
   "dependencies": {
     "@material-ui/core": "^4.9.5",
     "@testing-library/jest-dom": "^4.2.4",
